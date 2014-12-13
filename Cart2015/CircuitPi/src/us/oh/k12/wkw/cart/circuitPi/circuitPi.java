@@ -9,9 +9,9 @@ package us.oh.k12.wkw.cart.circuitPi;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import us.oh.k12.wkw.cart.circuitPi.commands.CommandBase;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,17 +22,18 @@ import us.oh.k12.wkw.cart.circuitPi.commands.CommandBase;
  */
 public class circuitPi extends IterativeRobot {
 
-    Command autonomousCommand;
-
+    //Command autonomousCommand;
+     
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-
+        //autonomousCommand = new StartUp();
         // Initialize all subsystems
         CommandBase.init();
+       
     }
 
     public void autonomousInit() {
@@ -52,7 +53,7 @@ public class circuitPi extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        autonomousCommand.cancel();
+        //autonomousCommand.cancel();
     }
 
     /**

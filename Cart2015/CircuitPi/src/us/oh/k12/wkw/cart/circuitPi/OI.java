@@ -1,12 +1,16 @@
 
 package us.oh.k12.wkw.cart.circuitPi;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
+import us.oh.k12.wkw.cart.circuitPi.commands.ArmGoDown;
+import us.oh.k12.wkw.cart.circuitPi.commands.ArmGoUp;
 import us.oh.k12.wkw.cart.circuitPi.commands.DriveBackwards;
 import us.oh.k12.wkw.cart.circuitPi.commands.DriveForward;
 import us.oh.k12.wkw.cart.circuitPi.commands.DriveTurnLeft;
 import us.oh.k12.wkw.cart.circuitPi.commands.DriveTurnRight;
+import us.oh.k12.wkw.cart.circuitPi.commands.DriveWithJoysticks;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -24,13 +28,18 @@ public class OI { //OPERATOR INTERFACE
     Button armHigher = new DigitalIOButton(11);
     Button armLower = new DigitalIOButton(12);
     
-    public OI() { //Assign commands to the buttons
-        driveForward.whileHeld(new DriveForward());
+    Joystick Drive = new Joystick(13);
+    
+    public OI() {
+
+//Assign commands to the buttons
+        driveForward.whileHeld(new DriveForward());  
         driveBackward.whileHeld (new DriveBackwards());
         leftTurn.whileHeld(new DriveTurnLeft());
         rightTurn.whileHeld(new DriveTurnRight());
- 
-        
+        armHigher.whileHeld(new ArmGoUp());
+        armLower.whileHeld(new ArmGoDown());
+   
     }
     
     // There are a few additional built in buttons you can use. Additionally,

@@ -17,8 +17,8 @@ public abstract class CommandBase extends Command {
 
     public static OI oi;
     // Create a single static instance of all of your subsystems
-    public static Subsystem HeightArm = new HeightArm();
-    public static Subsystem DriveSystem = new DriveSystem();
+    public static HeightArm HeightArm = new HeightArm();
+    public static DriveSystem DriveSystem = new DriveSystem();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

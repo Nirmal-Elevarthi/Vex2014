@@ -8,8 +8,10 @@ package us.oh.k12.wkw.cart.circuitPi.subsystems;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import us.oh.k12.wkw.cart.circuitPi.OI;
 import us.oh.k12.wkw.cart.circuitPi.RobotMap;
 import us.oh.k12.wkw.cart.circuitPi.commands.DriveDoNothing;
+import us.oh.k12.wkw.cart.circuitPi.commands.DriveWithJoysticks;
 
 /**
  *
@@ -21,9 +23,8 @@ public class DriveSystem extends Subsystem {
     SpeedController leftMotor = new Jaguar(RobotMap.leftMotor);
     SpeedController rightMotor = new Jaguar(RobotMap.rightMotor);
      
-   
-    /*public static final double pi = .7;
-    public void robotWeight(){
+   public static final double pi = 0.7;  //This number is the motor speed. Only change it UP HERE
+    /*public void robotWeight(){
         if(RobotMap.weightSensor()>=5)
         {
             pi += .2;
@@ -34,31 +35,46 @@ public class DriveSystem extends Subsystem {
         }
     }
     */
+    //Joystick or Button?
 
+   
+   
+   
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        leftMotor.set(0);
-        rightMotor.set(0);
+        if(false) {
+            setDefaultCommand(new DriveWithJoysticks());
+        }
+        else{
+            setDefaultCommand(new DriveDoNothing());
+        }
+        
     }
     
+    
+    
     public void driveForward() {
-        leftMotor.set(0.7);
-        rightMotor.set(0.7);
+        leftMotor.set(pi);
+        rightMotor.set(pi);
     }
     
     public void driveBackwards() {
-        leftMotor.set(-0.7);
-        rightMotor.set(-0.7);
+        leftMotor.set(-pi);
+        rightMotor.set(-pi);
     }
         
     public void driveTurnLeft() {
-        leftMotor.set(-0.7);
-        rightMotor.set(0.7);
+        leftMotor.set(-pi);
+        rightMotor.set(pi);
     }
     
     public void driveTurnRight() {
-        leftMotor.set(0.7);
-        rightMotor.set(-0.7);
+        leftMotor.set(pi);
+        rightMotor.set(-pi);
+    }
+    
+    public void driveWithJoysticks() {
+        
     }
     
     public void doNothing() {
